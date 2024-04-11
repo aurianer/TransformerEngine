@@ -283,7 +283,7 @@ int create_communicator_grouped2(communicator **comm, int pipegpus, int pipenode
   for (int i = 0; i < 100 + NVTE_MAX_SMS; i++)
     (*comm)->hostflags[i] = 0;
 #if (defined(__arm__) && __ARM_ARCH >= 7) || defined(__aarch64__)
-  __asm__ __volatile__("dmb sy" : : : "memory");
+  __asm__ __volatile__("dsb st" : : : "memory");
 #elif defined(_MSC_VER) && _MSC_VER >= 1310
   extern "C" void _ReadWriteBarrier();
 #  pragma intrinsic(_ReadWriteBarrier)
