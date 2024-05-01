@@ -10,7 +10,8 @@ target_include_directories(transformer_engine_userbuffers PUBLIC
                            "${CMAKE_CURRENT_SOURCE_DIR}")
 
 # Configure dependencies
-find_package(MPI REQUIRED COMPONENTS CXX)
+find_package(MPI REQUIRED COMPONENTS CXX
+  HINTS /user-environment/linux-sles15-neoverse_v2/gcc-12.3.0/cray-mpich-8.1.29-l4u3i4um5fudi4p7em6luirddny3jb44)
 target_link_libraries(transformer_engine_userbuffers PUBLIC
                       CUDA::cudart
                       CUDA::cuda_driver
